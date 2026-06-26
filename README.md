@@ -45,13 +45,6 @@ npm run build
 4. 在规则中心调整年限硬筛、目标关键词等偏好。
 5. 回到侧边栏执行“开始筛选与投递”。
 
-## 公开展示材料
-
-- 产品原则：[PRODUCT.md](PRODUCT.md)
-- 作品集展示页：[docs/plugin-portfolio.html](docs/plugin-portfolio.html)
-
-展示截图仅保留在本地，不纳入 GitHub 仓库。
-
 ## 注意事项
 
 - 默认规则仅为通用示例，使用前请按自己的求职目标修改。
