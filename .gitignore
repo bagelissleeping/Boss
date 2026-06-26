@@ -1,0 +1,13 @@
+﻿node_modules/
+dist/
+
+.claude/
+.impeccable/
+
+*.local
+*.log
+.DS_Store
+Thumbs.db
+
+docs/assets/
+portfolio-test.png

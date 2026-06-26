@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BOSS 求职助手作品集</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f7fb;
+        --surface: rgba(255, 255, 255, 0.96);
+        --surface-2: #eef3f8;
+        --ink: #0f172a;
+        --muted: #5b6472;
+        --border: #dbe3ed;
+        --accent: #0f766e;
+        --accent-strong: #115e59;
+        --success: #15803d;
+        --warning: #b45309;
+        --danger: #b91c1c;
+        --shadow: 0 20px 50px rgba(15, 23, 42, 0.06);
+        --radius: 24px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at top right, rgba(15, 118, 110, 0.08), transparent 30%),
+          linear-gradient(180deg, #fbfcfe 0%, var(--bg) 100%);
+        color: var(--ink);
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.55;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        width: min(1160px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 28px 0 56px;
+      }
+
+      .hero,
+      .panel,
+      .window,
+      .chip,
+      .metric,
+      .fact,
+      .note {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--surface);
+        box-shadow: var(--shadow);
+      }
+
+      .hero {
+        padding: 28px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+        gap: 20px;
+        align-items: stretch;
+      }
+
+      .eyebrow {
+        margin: 0 0 10px;
+        color: var(--muted);
+        font-size: 12px;
+        letter-spacing: 0.04em;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        font-size: clamp(2.6rem, 5.6vw, 4.8rem);
+        line-height: 1;
+        letter-spacing: -0.05em;
+        max-width: 10ch;
+      }
+
+      .lead {
+        margin-top: 14px;
+        max-width: 56ch;
+        font-size: 1rem;
+        color: var(--muted);
+      }
+
+      .chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        min-height: 34px;
+        padding: 0 12px;
+        background: var(--surface-2);
+        color: #334155;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .hero-side {
+        padding: 18px;
+        display: grid;
+        gap: 12px;
+        align-content: start;
+      }
+
+      .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .metric,
+      .fact,
+      .note,
+      .panel,
+      .window {
+        padding: 14px;
+      }
+
+      .metric span,
+      .fact span,
+      .window .label {
+        display: block;
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+
+      .metric strong {
+        display: block;
+        font-size: 1.45rem;
+        line-height: 1;
+      }
+
+      .metric small {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .section {
+        margin-top: 18px;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .section-head h2 {
+        font-size: 1.35rem;
+        line-height: 1.15;
+      }
+
+      .section-head p {
+        max-width: 52ch;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .story-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .window {
+        overflow: hidden;
+      }
+
+      .window-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+
+      .dots {
+        display: flex;
+        gap: 6px;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: #d1d9e5;
+      }
+
+      .window-title {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .screen {
+        border: 1px solid rgba(15, 23, 42, 0.06);
+        border-radius: 18px;
+        padding: 14px;
+        background: linear-gradient(180deg, #ffffff 0%, #f8fbfd 100%);
+      }
+
+      .screen + .screen {
+        margin-top: 12px;
+      }
+
+      .screen-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+
+      .screen-head h3 {
+        font-size: 0.98rem;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 24px;
+        padding: 0 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .badge-blue {
+        background: #dbeafe;
+        color: #1d4ed8;
+      }
+
+      .badge-green {
+        background: #dcfce7;
+        color: #166534;
+      }
+
+      .badge-yellow {
+        background: #fef3c7;
+        color: #92400e;
+      }
+
+      .line-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .line-item {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(15, 23, 42, 0.06);
+      }
+
+      .line-item:first-child {
+        padding-top: 0;
+        border-top: none;
+      }
+
+      .line-item strong {
+        display: block;
+        font-size: 13px;
+      }
+
+      .line-item span {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .panel-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .panel {
+        min-height: 120px;
+      }
+
+      .panel h3 {
+        margin-bottom: 10px;
+        font-size: 1rem;
+      }
+
+      .tag-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tag-grid span {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 0 10px;
+        border-radius: 999px;
+        background: var(--surface-2);
+        color: #334155;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .facts {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 12px;
+      }
+
+      .flow-steps {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .step {
+        padding: 14px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: var(--surface);
+      }
+
+      .step .num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 30px;
+        height: 30px;
+        border-radius: 999px;
+        background: var(--surface-2);
+        font-size: 12px;
+        font-weight: 800;
+        margin-bottom: 10px;
+      }
+
+      .step h3 {
+        margin-bottom: 6px;
+        font-size: 0.98rem;
+      }
+
+      .step p {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .note h3 {
+        margin-bottom: 10px;
+        font-size: 1rem;
+      }
+
+      .note p {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .footer {
+        margin-top: 16px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      @media (max-width: 980px) {
+        .hero,
+        .facts {
+          grid-template-columns: 1fr;
+        }
+
+        .story-grid,
+        .flow-steps,
+        .panel-grid,
+        .stat-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .page {
+          width: min(100% - 20px, 1160px);
+          padding-top: 16px;
+        }
+
+        .hero {
+          padding: 20px;
+        }
+
+        .hero-side,
+        .panel,
+        .note,
+        .window {
+          padding: 12px;
+        }
+
+        .story-grid,
+        .flow-steps,
+        .panel-grid,
+        .stat-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section-head {
+          align-items: start;
+          flex-direction: column;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Chrome 扩展作品集</p>
+          <h1>BOSS 求职助手</h1>
+          <p class="lead">岗位筛选, 复核, 批量投递, 记录回看。</p>
+          <div class="chip-row">
+            <span class="chip">BOSS 直聘</span>
+            <span class="chip">MV3</span>
+            <span class="chip">Vue 3</span>
+            <span class="chip">content script</span>
+            <span class="chip">sidepanel</span>
+          </div>
+        </div>
+
+        <aside class="hero-side">
+          <div class="stat-grid">
+            <div class="metric">
+              <span>核心页面</span>
+              <strong>侧边栏</strong>
+              <small>状态、动作、结果集中展示。</small>
+            </div>
+            <div class="metric">
+              <span>配置入口</span>
+              <strong>规则中心</strong>
+              <small>年限硬筛和关键词维护。</small>
+            </div>
+            <div class="metric">
+              <span>执行方式</span>
+              <strong>批量化</strong>
+              <small>连续处理列表页岗位。</small>
+            </div>
+            <div class="metric">
+              <span>数据保存</span>
+              <strong>本地存储</strong>
+              <small>结果、历史、规则都落地。</small>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <h2>真实使用流程</h2>
+            <p>页面只保留最关键的状态, 让它看起来像一个真正在跑的工具。</p>
+          </div>
+        </div>
+
+        <div class="story-grid">
+          <article class="window">
+            <div class="window-top">
+              <div class="dots" aria-hidden="true">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              </div>
+              <span class="window-title">Sidepanel</span>
+            </div>
+            <div class="screen">
+              <div class="screen-head">
+                <h3>当前页面</h3>
+                <span class="badge badge-blue">已连接</span>
+              </div>
+              <div class="line-list">
+                <div class="line-item">
+                  <div>
+                    <strong>页面类型</strong>
+                    <span>list</span>
+                  </div>
+                  <div>
+                    <strong>今日投递</strong>
+                    <span>12</span>
+                  </div>
+                </div>
+                <div class="line-item">
+                  <div>
+                    <strong>连接状态</strong>
+                    <span>已连接</span>
+                  </div>
+                  <div>
+                    <strong>运行状态</strong>
+                    <span>processing</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="screen">
+              <div class="screen-head">
+                <h3>今日操作</h3>
+                <span class="badge badge-green">运行中</span>
+              </div>
+              <div class="line-list">
+                <div class="line-item">
+                  <div>
+                    <strong>已发送</strong>
+                    <span>08</span>
+                  </div>
+                  <div>
+                    <strong>待复核</strong>
+                    <span>03</span>
+                  </div>
+                  <div>
+                    <strong>已跳过</strong>
+                    <span>05</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="window">
+            <div class="window-top">
+              <div class="dots" aria-hidden="true">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              </div>
+              <span class="window-title">结果汇总</span>
+            </div>
+            <div class="screen">
+              <div class="screen-head">
+                <h3>本轮已发送</h3>
+                <span class="badge badge-green">3</span>
+              </div>
+              <div class="line-list">
+                <div class="line-item">
+                  <div>
+                    <strong>蚂蚁集团</strong>
+                    <span>AI 产品经理</span>
+                  </div>
+                </div>
+                <div class="line-item">
+                  <div>
+                    <strong>京东科技</strong>
+                    <span>ToB 产品经理</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="screen">
+              <div class="screen-head">
+                <h3>待复核 / 已跳过</h3>
+                <span class="badge badge-yellow">4</span>
+              </div>
+              <div class="line-list">
+                <div class="line-item">
+                  <div>
+                    <strong>待复核</strong>
+                    <span>需要人工确认</span>
+                  </div>
+                </div>
+                <div class="line-item">
+                  <div>
+                    <strong>已跳过</strong>
+                    <span>规则命中或不匹配</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="window">
+            <div class="window-top">
+              <div class="dots" aria-hidden="true">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              </div>
+              <span class="window-title">规则中心</span>
+            </div>
+            <div class="screen">
+              <div class="screen-head">
+                <h3>年限硬筛</h3>
+                <span class="badge badge-blue">保存</span>
+              </div>
+              <div class="tag-grid">
+                <span>5-10年</span>
+                <span>目标关键词</span>
+                <span>拒绝关键词</span>
+                <span>外包信号</span>
+              </div>
+            </div>
+            <div class="screen">
+              <div class="screen-head">
+                <h3>实现模块</h3>
+                <span class="badge badge-green">MV3</span>
+              </div>
+              <div class="tag-grid">
+                <span>background</span>
+                <span>content</span>
+                <span>sidepanel</span>
+                <span>storage</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <h2>怎么实现</h2>
+            <p>把页面识别、规则判断、任务执行和结果回传拆成独立模块。</p>
+          </div>
+        </div>
+
+        <div class="facts">
+          <div class="panel-grid">
+            <article class="panel">
+              <h3>background</h3>
+              <div class="tag-grid">
+                <span>页面上下文</span>
+                <span>诊断</span>
+                <span>批量任务桥接</span>
+              </div>
+            </article>
+            <article class="panel">
+              <h3>content script</h3>
+              <div class="tag-grid">
+                <span>列表解析</span>
+                <span>页面识别</span>
+                <span>自动执行</span>
+              </div>
+            </article>
+            <article class="panel">
+              <h3>sidepanel</h3>
+              <div class="tag-grid">
+                <span>状态</span>
+                <span>进度</span>
+                <span>结果</span>
+              </div>
+            </article>
+            <article class="panel">
+              <h3>storage</h3>
+              <div class="tag-grid">
+                <span>history</span>
+                <span>settings</span>
+                <span>summary</span>
+              </div>
+            </article>
+          </div>
+
+          <aside class="note">
+            <h3>落地结果</h3>
+            <p>在真实的 BOSS 列表页里, 插件会先识别页面, 再按规则做筛选, 然后把投递、复核、跳过和历史记录同步回侧边栏。</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <h2>流程顺序</h2>
+            <p>四步足够表达这个产品的完整闭环。</p>
+          </div>
+        </div>
+
+        <div class="flow-steps">
+          <article class="step">
+            <span class="num">01</span>
+            <h3>识别</h3>
+            <p>识别 BOSS 列表页和页面连接状态。</p>
+          </article>
+          <article class="step">
+            <span class="num">02</span>
+            <h3>筛选</h3>
+            <p>按规则判断可发送、待复核、已跳过。</p>
+          </article>
+          <article class="step">
+            <span class="num">03</span>
+            <h3>投递</h3>
+            <p>把可发送岗位批量处理并同步今日投递数。</p>
+          </article>
+          <article class="step">
+            <span class="num">04</span>
+            <h3>回看</h3>
+            <p>保留结果、历史和规则配置，方便后续查看。</p>
+          </article>
+        </div>
+      </section>
+
+      <div class="footer">单文件 HTML, 可直接打开预览或嵌入到个人网站中。</div>
+    </main>
+  </body>
+</html>
